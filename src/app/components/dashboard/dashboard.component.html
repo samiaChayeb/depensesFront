@@ -1,0 +1,49 @@
+<div>
+    <div nz-row>
+            <h3 nz-card-grid nz-col [ngStyle]="gridStyle">Balance:
+                <span style="color: slateblue;">${{stats?.balance}}</span>
+            </h3>
+            <h3 nz-card-grid nz-col [ngStyle]="gridStyle">Totale des revenus :
+                <span style="color: green;">${{stats?.revenu}}</span>
+            </h3>
+            <h3 nz-card-grid nz-col [ngStyle]="gridStyle"> Totale des dépenses:
+                <span style="color: red;">${{stats?.depense}}</span>
+            </h3>
+    </div>
+    <div nz-row style="margin-top: 20px">
+        <div nz-col nzFlex="1 1 200px">
+            <nz-card nzType="inner" nzTitle="Carte des revenus"></nz-card>
+        </div>
+        <div nz-col nzFlex="0 1 300px" style="margin-left: 15px">
+            <nz-card nzType="inner" nzTitle="Historique recent">
+                <div nz-card-grid style="width: 100%;">
+                    <span style="color: green;">+{{stats?.latestRevenu?.montant}} {{stats?.latestRevenu?.titre}}</span>
+                </div>
+                <div nz-card-grid style="width: 100%;">
+                    <span style="color: red;">-{{stats?.latestDepense?.montant}} {{stats?.latestDepense?.titre}}</span>
+                </div>
+            </nz-card>
+
+            <nz-card nzType="inner" nzTitle="Revenu">
+                <div nz-row>
+                    <div nz-col nzXs="2" nzSm="4" nzMd="6" nzLg="8" nzXl="10">Minimum: {{stats?.minRevenu}}</div>
+                    <div nz-col nzXs="20" nzSm="16" nzMd="12" nzLg="8" nzXl="4"></div>
+                    <div nz-col nzXs="2" nzSm="4" nzMd="6" nzLg="8" nzXl="10">Maximum: {{stats?.maxRevenu}}</div>
+                </div>
+            </nz-card>
+
+            <nz-card nzType="inner" nzTitle="Depense">
+                <div nz-row>
+                    <div nz-col nzXs="2" nzSm="4" nzMd="6" nzLg="8" nzXl="10">Minimum: {{stats?.minDepense}}</div>
+                    <div nz-col nzXs="20" nzSm="16" nzMd="12" nzLg="8" nzXl="4"></div>
+                    <div nz-col nzXs="2" nzSm="4" nzMd="6" nzLg="8" nzXl="10">Maximum: {{stats?.maxDepense}}</div>
+                </div>
+            </nz-card>
+        </div>
+    </div>
+    <div nz-row style="margin-top: 20px;">
+        <div nz-col nzFlex="1 1 200px">
+            <nz-card nzType="inner" nzTitle="Cate des dépenses"></nz-card>
+        </div>
+    </div>
+</div>

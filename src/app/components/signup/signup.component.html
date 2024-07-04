@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Sign Up</h2>
+                </div>
+                <div class="card-body">
+                    <form (ngSubmit)="register()" class="form-horizontal" [formGroup]="userForm">
+                        <div class="form-group row mb-3">
+                            <label for="firstname" class="col-sm-3 col-form-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="firstname" formControlName="firstname" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="lastname" class="col-sm-3 col-form-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="lastname" formControlName="lastname" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="email" class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" id="email" formControlName="userEmail" class="form-control" />
+                                <div *ngIf="userForm.get('userEmail')?.hasError('required') && userForm.get('userEmail')?.touched"
+                                    class="text-danger">Email is required</div>
+                                <div *ngIf="userForm.get('userEmail')?.hasError('email') && userForm.get('userEmail')?.touched"
+                                    class="text-danger">Invalid email format</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="password" class="col-sm-3 col-form-label">Password</label>
+                            <div class="col-sm-9">
+                                <input type="password" id="password" formControlName="password" class="form-control" />
+                                <div *ngIf="userForm.get('password')?.hasError('required') && userForm.get('password')?.touched"
+                                    class="text-danger">Password is required</div>
+                                <div *ngIf="userForm.get('password')?.hasError('minlength') && userForm.get('password')?.touched"
+                                    class="text-danger">Password must be at least 6 characters</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label for="confirmPassword" class="col-sm-3 col-form-label">Confirm Password</label>
+                            <div class="col-sm-9">
+                                <input type="password" id="confirmPassword" formControlName="confirmPassword"
+                                    class="form-control" />
+                                <div *ngIf="userForm.get('confirmPassword')?.hasError('required') && userForm.get('confirmPassword')?.touched"
+                                    class="text-danger">Confirm Password is required</div>
+                                <div *ngIf="userForm.hasError('mismatch') && userForm.get('confirmPassword')?.touched"
+                                    class="text-danger">Passwords do not match</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <div class="col-sm-9 offset-sm-3">
+                                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                                <span>i have already an account: </span><a routerLink="/login" routerLinkActive="active">login</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
